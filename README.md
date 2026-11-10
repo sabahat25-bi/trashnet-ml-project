@@ -23,7 +23,11 @@ trashnet-ml-project/
 ## Setup
 
 1. **Clone the repo and install packages**
-   
+   ```bash
+   git clone https://github.com/sabahat25-bi/trashnet-ml-project.git
+   cd trashnet-ml-project
+   python -m pip install -r requirements.txt
+   ```
 
 2. **Download the data.** Get **TrashNet (dataset-resized)** from Kaggle and unzip it so the class folders sit exactly here:
    ```
@@ -60,3 +64,10 @@ train, val, test = split_dataset(seed=42)   # lists of (path, label)
 - 37 % of cardboard images are close-ups without background (possible shortcut).
 - **Benchmark to beat: macro-F1 = 0.77** (random forest on HSV colour histograms).
 
+## Team rules
+
+- Work on your own branch and merge into `main` through a pull request.
+- Always use `split_dataset(seed=42)`, so all models are compared on the same test set.
+- Main metric: **macro-F1**, plus per-class recall and confusion matrices.
+- Never commit `data/` or `__pycache__/`.
+- Notebooks must run with **Restart → Run All**.
