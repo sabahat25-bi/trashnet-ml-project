@@ -2,22 +2,36 @@
 
 A machine learning group project that classifies images of waste into six categories: **cardboard, glass, metal, paper, plastic and trash**. The goal is to help people sort their waste correctly, using a Streamlit app where you upload a photo and get a prediction.
 
+## Live Application
+
+Try the deployed Streamlit application here:
+
+[Open Smart Waste Classification App](https://trashnet-waste-classification.streamlit.app/)
+
 ## Project structure
 
 ```
 trashnet-ml-project/
-├── data/                              # not on GitHub (git-ignored)
-│   ├── raw/Trashnet/dataset-resized/  # cardboard/ glass/ metal/ paper/ plastic/ trash/
-│   └── processed/                     # created by the notebooks
+│
+├── models/
+│   └── mobilenetv2_trashnet.pth
+│
 ├── notebooks/
-│   ├── 01_eda_preprocessing.ipynb     # exploratory data analysis + colour baseline
-│   ├── 02_baseline_cnn.ipynb          # CNN trained from scratch
-│   └── 03_transfer_learning.ipynb     # pretrained model
+│   ├── 01_eda_preprocessing.ipynb
+│   ├── 02_baseline_cnn.ipynb
+│   └── 03_transfer_learning.ipynb
+│
+├── reports/
+│   ├── figures/
+│   └── 10fold_cv_results.csv
+│
 ├── src/
-│   └── data_utils.py                  # shared code: paths, split, image features
-├── reports/figures/                   # saved plots
+│   └── data_utils.py
+│
+├── app.py
 ├── requirements.txt
-└── README.md
+├── README.md
+└── .gitignore
 ```
 
 ## Setup
@@ -40,6 +54,14 @@ trashnet-ml-project/
    python -m src.data_utils
    ```
    Expected output: `Dataset found: True`, the six categories, and 1,764 / 378 / 382 train / validation / test images (2,524 in total).
+
+4. ### Run the Streamlit App Locally
+
+After installing the required packages, run the following command from the project root folder:
+
+```bash
+streamlit run app.py 
+```  
 
 > Never hard-code your own path (e.g. `C:\Users\...`). All paths are built from the project folder, so the code works on every computer.
 
